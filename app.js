@@ -32,7 +32,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use(session({ name:'Alchemy', secret: 'abcd', resave: false, saveUninitialized: true }));
 
 //Basic Routing
-app.get('/', routes.index);
+app.get('/:id', routes.index);
+
 
 
 //Change error handler
