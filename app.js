@@ -1,3 +1,4 @@
+var cfenv = require('cfenv');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -10,6 +11,7 @@ var users = require('./routes/users');
 
 var app = express();
 
+var appEnv = cfenv.getAppEnv();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -56,5 +58,11 @@ app.use(function(err, req, res, next) {
   });
 });
 
+// start server on the specified port and binding host
+app.listen(appEnv.port, appEnv.bind, function() {
+
+    // print a message when the server starts listening
+    console.log("server starting on " + appEnv.url);
+});
 
 module.exports = app;
