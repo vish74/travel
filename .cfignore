@@ -1,6 +1,2 @@
-logs
-*.log
-coverage
-.grunt
-node_modules
-.idea
+launchConfigurations/
+.git/
