@@ -28,7 +28,8 @@ exports.country = function (req, res) {
 
         var json_fil = JSON.parse(callback);
         var name = json_fil["personality_blend"]["name"];
-        console.log(JSON.stringify(name));
+        res.status(200).send(JSON.stringify(name));
+        //console.log(JSON.stringify(name));
     })
 
 };
