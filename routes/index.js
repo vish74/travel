@@ -28,7 +28,21 @@ exports.country = function (req, res) {
 
         var json_fil = JSON.parse(callback);
         var name = json_fil["personality_blend"]["name"];
-        res.status(200).send(JSON.stringify(name));
+        function intersect(a, b) {
+            var t;
+            if (b.length > a.length) t = b, b = a, a = t; // indexOf to loop over shorter
+            return a.filter(function (e) {
+                if (b.indexOf(e) !== -1) return true;
+            });
+        }
+        intersect(arr1, arr2);
+        var dd = JSON.stringify(name);
+        var res = dd.split("/");
+        var arr1 = res[0];
+        var arr2 = res[1];
+        var finasd = intersect(arr1, arr2);
+        res.status(200).send(finasd);
+
         //console.log(JSON.stringify(name));
     })
 
