@@ -72,17 +72,17 @@ exports.listuser = function (req, res) {
 };
 
 exports.help = function (req, res) {
-    var lat_lon = req.params.lat_lon;
+    var lat_lon = req.params.id;
     var position = lat_lon.split("_");
     var lat = Number(position[0]).toFixed(4);
     var lon = Number(position[1]).toFixed(4);
 
-    var post_url =
+    var post_url = "https://prod-mmx-001.magnet.com:5221/mmxmgmt/api/v1/send_message";
+    var sds = '{"recipientUsernames": ["quickstartuser1", "user2"], "content": {"message":"Urgent! I need help!", "date":"09192019"},"receipt": false}'
 
-
-
-
-curl -X POST -H "X-mmx-app-id:45rif2389h3" -H "X-mmx-api-key:1c6c5b81-2aad-442b-a8b2-de2568d6d5b7" -H "Content-Type: application/json" -d '{"recipientUsernames": ["quickstartuser1", "user2"], "content": {"message":"Urgent! I need help!", "date":"09192019"},"receipt": false}' https://prod-mmx-001.magnet.com:5221/mmxmgmt/api/v1/send_message
+    postTo(post_url,sds,function(callback){
+        res.status(200).send(callback);
+    });
 
 
 
@@ -99,10 +99,16 @@ function Getfrom(url, callback) {
     });
 }
 
-function postTo(url, callback) {
+function postTo(url,post_content, callback) {
     request.post({
-        headers:    {'content-type' : 'application/json'},
-        url:        wsdl_url,
+        headers: [
+            {
+                'X-mmx-api-key': '1c6c5b81-2aad-442b-a8b2-de2568d6d5b7',
+                'X-mmx-app-id': '45rif2389h3',
+                'Content-Type': 'application/json'
+            }
+        ],
+        url:        url,
         body:       post_content
     }, function(error, response, body){
         callback(body);
