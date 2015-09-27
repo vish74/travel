@@ -34,7 +34,7 @@ exports.country = function (req, res) {
         var ress = name.split("/");
         var arr1 = eval(ress[0]);
         var arr2 = eval(ress[1]);
-      
+
         var resultss = [];
         for (var i = 0; i < arr1.length; i++) {
             if (arr2.indexOf(arr1[i]) !== -1) {
@@ -71,11 +71,39 @@ exports.listuser = function (req, res) {
 
 };
 
+exports.help = function (req, res) {
+    var lat_lon = req.params.lat_lon;
+    var position = lat_lon.split("_");
+    var lat = Number(position[0]).toFixed(4);
+    var lon = Number(position[1]).toFixed(4);
+
+    var post_url =
+
+
+
+
+curl -X POST -H "X-mmx-app-id:45rif2389h3" -H "X-mmx-api-key:1c6c5b81-2aad-442b-a8b2-de2568d6d5b7" -H "Content-Type: application/json" -d '{"recipientUsernames": ["quickstartuser1", "user2"], "content": {"message":"Urgent! I need help!", "date":"09192019"},"receipt": false}' https://prod-mmx-001.magnet.com:5221/mmxmgmt/api/v1/send_message
+
+
+
+
+
+}
 
 function Getfrom(url, callback) {
     request.get({
         headers:    {'content-type' : 'text/json'},
         url:        url
+    }, function(error, response, body){
+        callback(body);
+    });
+}
+
+function postTo(url, callback) {
+    request.post({
+        headers:    {'content-type' : 'application/json'},
+        url:        wsdl_url,
+        body:       post_content
     }, function(error, response, body){
         callback(body);
     });
