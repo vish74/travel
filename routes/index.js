@@ -35,7 +35,7 @@ exports.country = function (req, res) {
                 if (b.indexOf(e) !== -1) return true;
             });
         }
-        intersect(arr1, arr2);
+        
         var dd = JSON.stringify(name);
         var res = dd.split("/");
         var arr1 = res[0];
