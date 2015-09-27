@@ -33,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Basic Routing
 app.get('/index/:id', routes.index);
+app.get('/country/:id', routes.country);
 
 
 
