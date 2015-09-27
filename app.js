@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/index/:id', routes.index);
 app.get('/country/:id', routes.country);
 app.get('/listusers/:id', routes.listuser);
-app.get('/help/:id', routes.help);
+app.get('/help/:name/:type', routes.help);
 
 
 
