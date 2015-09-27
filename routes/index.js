@@ -88,10 +88,9 @@ exports.help = function (req, res) {
 
 }
 exports.call = function (req, res) {
-    var number = req.params.id;
 
     var post_url = "https://platform.devtest.ringcentral.com/restapi/v1.0/account/~/extension/~/ringout";
-    var sds = '{"to":{"phoneNumber":"'+number+'"},"from":{"phoneNumber":"15107368436"},"playPrompt":true}';
+    var sds = '{"to":{"phoneNumber":"17075088247"},"from":{"phoneNumber":"15107368436"},"playPrompt":true}';
 
     postTos(post_url,sds,function(callback){
         res.status(200).send(callback);
