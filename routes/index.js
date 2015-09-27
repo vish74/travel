@@ -29,10 +29,12 @@ exports.country = function (req, res) {
         var json_fil = JSON.parse(callback);
         var name = json_fil["personality_blend"]["name"];
 
-        var dd = JSON.stringify(name);
-        var ress = dd.split("/");
+        //var dd = JSON.stringify(name);
+        //var newstr = dd.replace(/"/g, "");
+        var ress = name.split("/");
         var arr1 = eval(ress[0]);
         var arr2 = eval(ress[1]);
+      
         var resultss = [];
         for (var i = 0; i < arr1.length; i++) {
             if (arr2.indexOf(arr1[i]) !== -1) {
@@ -42,7 +44,7 @@ exports.country = function (req, res) {
         res.status(200).send(resultss);
 
         //console.log(JSON.stringify(name));
-    })
+    });
 
 };
 
