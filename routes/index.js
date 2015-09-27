@@ -33,13 +33,13 @@ exports.country = function (req, res) {
         var ress = dd.split("/");
         var arr1 = eval(ress[0]);
         var arr2 = eval(ress[1]);
-        var results = [];
+        var resultss = [];
         for (var i = 0; i < arr1.length; i++) {
             if (arr2.indexOf(arr1[i]) !== -1) {
-                results.push(arr1[i]);
+                resultss.push(arr1[i]);
             }
         }
-        res.status(200).send(results);
+        res.status(200).send(resultss);
 
         //console.log(JSON.stringify(name));
     })
