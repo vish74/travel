@@ -6,8 +6,8 @@ exports.index = function (req, res) {
 
 
     Getfrom(get_url, function(callback){
-
-        console.log(callback);
+        res.status(200).send(callback);
+        //console.log(callback);
     })
 
 };
