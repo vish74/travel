@@ -76,7 +76,7 @@ exports.help = function (req, res) {
     var type = req.params.type;
     
     var post_url = "https://prod-mmx-001.magnet.com:5221/mmxmgmt/api/v1/send_message";
-    var sds = '{"recipientUsernames": ["quickstartuser1", "user2"], "content": {"textContent":"'+name+' needs help with '+type+'", "date":"09192019"},"receipt": false}';
+    var sds = '{"recipientUsernames": ["quickstartuser1", "user2"], "content": {"textContent":"'+name+' needs help with '+type+'" near Hacker Dojo, "date":"09192019"},"receipt": false}';
 
     postTo(post_url,sds,function(callback){
         res.status(200).send(callback);
