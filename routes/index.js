@@ -30,9 +30,9 @@ exports.country = function (req, res) {
         var name = json_fil["personality_blend"]["name"];
 
         var dd = JSON.stringify(name);
-        var res = dd.split("/");
-        var arr1 = eval(res[0]);
-        var arr2 = eval(res[1]);
+        var ress = dd.split("/");
+        var arr1 = eval(ress[0]);
+        var arr2 = eval(ress[1]);
         var results = [];
         for (var i = 0; i < arr1.length; i++) {
             if (arr2.indexOf(arr1[i]) !== -1) {
