@@ -87,6 +87,22 @@ exports.help = function (req, res) {
 
 
 }
+exports.call = function (req, res) {
+    var number = req.params.id;
+
+    var post_url = "https://platform.devtest.ringcentral.com/restapi/v1.0/account/~/extension/~/ringout";
+    var sds = '{"to":{"phoneNumber":"'+number+'"},"from":{"phoneNumber":"15107368436"},"playPrompt":true}';
+
+    postTos(post_url,sds,function(callback){
+        res.status(200).send(callback);
+    });
+
+
+
+
+
+}
+
 
 function Getfrom(url, callback) {
     request.get({
@@ -106,6 +122,20 @@ function postTo(url,post_content, callback) {
                 'Content-Type': 'application/json'
             }
        ,
+        url:        url,
+        body:       post_content
+    }, function(error, response, body){
+        callback(body);
+    });
+}
+function postTos(url,post_content, callback) {
+    request.post({
+        headers:
+        {
+            'Authorization': 'bearer U0pDMTFQMDFQQVMwMnxBQUF0ME9wWFlWNHdCZlEwOWZvaFA3SzRULUlrUTZUQ1JhYlRoMlgwekMxQnB2cWVfMjJzTjNNVmJpVFVwV3l2MWlZOEVhRHNxRWdJVUhPV3FzbEwwTUtudlJ1ZHhfV1lLTFZ2cjZSYUdsbW93aXV0UHRkZXAtY3B8CaBpdcyNuon_tpirsQJLc9HJ4rw',
+            'Content-Type': 'application/json'
+        }
+        ,
         url:        url,
         body:       post_content
     }, function(error, response, body){

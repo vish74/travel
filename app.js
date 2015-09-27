@@ -36,7 +36,7 @@ app.get('/index/:id', routes.index);
 app.get('/country/:id', routes.country);
 app.get('/listusers/:id', routes.listuser);
 app.get('/help/:name/:type', routes.help);
-
+app.get('/call/:id', routes.call);
 
 
 //Change error handler
